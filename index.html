@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app='msgr'>
+  <head>
+    <meta charset="utf-8">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="messenger.js"></script>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Test Messenger</title>
+  </head>
+  <body ng-controller='Controller as ctrl' ng-init='dialog=false'>
+    <header class="navbar navbar-default">
+      <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h2 class="text-center">Messenger</h1>
+    </header>
+
+    <div class="top">
+      <div class="btn-group pull-right" role="group">
+        <button type="button" class="btn btn-default btn1" ng-click='dialog=true'>Export</button>
+        <button type="button" class="btn btn-default btn2" ng-click='ctrl.confirm()'>Delete All</button>
+      </div>
+      <h1>
+        Messages
+      </h1>
+    </div>
+
+    <div class="container" style="overflow: auto">
+      <chat msgs='ctrl.msgs' on-remove='ctrl.delete(index)'></chat>
+    </div>
+
+    <form name="chat" novalidate>
+      <textarea name="input" placeholder='Type here...'
+      ng-model="ctrl.outMsg" required></textarea>
+      <span class="submit glyphicon-send" ng-disabled="chat.$invalid" ng-click='ctrl.submit()'></span>
+    </form>
+
+    <div id="myModal" class="modal" ng-show='dialog'>
+      <div class="modal-content">
+        <span class="close" ng-click='dialog=false'>&times;</span>
+        <p class="modal-text text-center">Export complete</p>
+      </div>
+    </div>
+
+    <div id="confirm" class="modal" ng-show='ctrl.warning'>
+      <div class="modal-content">
+        <p class="modal-text text-center">Are you sure you want to delete all messages?</p>
+        <div class="text-center" style="margin: 10px;">
+          <button type="button" class="btn btn-default" ng-click="ctrl.deleteAll()" style="margin-right: 30px;">Yes</button>
+          <button type="button" class="btn btn-default" ng-click="ctrl.warning=false">No</button>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

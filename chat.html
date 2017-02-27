@@ -1,0 +1,7 @@
+<div ng-repeat='msg in $ctrl.msgs'>
+  <div class="{{ msg.class }} msgs">
+    <p style="font-size: 15px"><i>{{msg.name}}</i> ({{msg.date}})</p>
+    {{ msg.text }}
+    <span ng-click='$ctrl.delete($index)' class="glyphicon glyphicon-trash del"></span>
+  </div>
+</div>
