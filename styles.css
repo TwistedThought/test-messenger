@@ -72,6 +72,7 @@ textarea {
   padding: 10px 22px 10px 15px;
   background-color: #087cb5;
   border-radius: 100%;
+  border: none;
 }
 
 .submit:hover {

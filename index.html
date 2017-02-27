@@ -36,7 +36,7 @@
     <form name="chat" novalidate>
       <textarea name="input" placeholder='Type here...'
       ng-model="ctrl.outMsg" required></textarea>
-      <span class="submit glyphicon-send" ng-disabled="chat.$invalid" ng-click='ctrl.submit()'></span>
+      <button class="submit glyphicon-send" ng-disabled="chat.$invalid" ng-click='ctrl.submit()'></button>
     </form>
 
     <div id="myModal" class="modal" ng-show='dialog'>

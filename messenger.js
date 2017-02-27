@@ -7,13 +7,12 @@ angular.module('msgr', [])
   templateUrl: 'chat.html',
   controller: chatController,
   bindings: {
-      msgs: '=',
+      msgs: '<',
       onRemove: '&'
   }
 });
 
-chatController.$inject = ['$scope'];
-function chatController($scope) {
+function chatController() {
   this.delete = function(myindex) {
     this.onRemove({index: myindex});
   }
@@ -23,7 +22,6 @@ Controller.$inject = ['$timeout'];
 function Controller($timeout) {
   var ctrl = this;
   ctrl.warning = false;
-
   ctrl.msgs = [];
 
   ctrl.submit = function() {
@@ -68,6 +66,5 @@ function datetime() {
   d = day + " " + time;
   return d;
 }
-
 
 })();
